@@ -1,4 +1,37 @@
-
-en
-conf ter
-
+enable					관리자모드 접속[Privilege Exec Mode]	
+config terminal					글로벌 모드 접속[Global Mode]	
+						
+no ip domain-loopup					불필요한 dns 요청 해지	
+logging synchronous					명령어랑 로그 중첩 현상 해결	
+						
+crypto key generate rsa					ssh 접속을 위한 crypto key 생성	
+						
+						
+						
+						
+						
+linevty 0 15					telnet 접속 설정	
+login local					계정 만든 걸로 접속	
+transport input telnet						
+transport input ssh						
+password [password]					telnet 비밀번호 설정	
+exit						
+						
+enable secret [password]					enable 비밀번호	
+service password-encryption						
+username [account-name] privilege 15 secret [password]						계정 생성 privilege 0,15 는 관리자 권환
+						
+vlan [vlan num]						
+name [vlan name]						
+						
+						
+						
+interface range interface-range					ap 및 업링크 부분 설정	
+swi tru en dot1						              해당 포트 트렁크 암호화 방식 설정
+sw mode trunk						                트렁크 모드로 변환
+sw trunk allow vlan [vlan-num]				  해당 포트에 vlan 할당
+						
+inter ran interface-range					pc 및 전화기 설정	
+sw mode access						
+sw acce vlan [vlan-num]	          pc용 vlan 설정					
+sw voice vlan [voice-vlan-num]	  전화기용 vlan 설정
