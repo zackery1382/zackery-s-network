@@ -7,48 +7,63 @@ MITM - Man In The Middle - 공격과 같이 MAC, IP의 ARP 패킷을 가로채 �
 Untrust로 설정된 Interface에서 통신되는 packet을 가로채 확인하여 옳지 않은 MAC - IP 패킷을 로그로 남기고 버림							
 Trust된 Interface로 packet이 들어오면 통과							
 DHCP snooping 보다 ACL 우선, ACL에서 거부된 packet은 DHCP Snooping DB를 확인 하지도 않고 거부됨							
+		
+		
+		
+유저 인터페이스
+설정
+SW(config)#ip arp inspection vlan 10
+SW(config)#interface range ethernet 0/1-3
+sw(config-if-range)#ip arp inspection limit rate 50
+
+
+dhcp 서버와 연결된 인터페이스
+설정
+SW1(config)interface ethernet 0/0
+SW1(config-if)ip arp inspection turst
 							
-유저 인터페이스							
-							dhcp 서버 인터페이스
-							
-							
-							
-							
-							
-							
-							
+	
+					
 ip arp inspection vlan [vlan id] - DAI를 적용할 Vlan 입력							
 ip arp inspection limit rate [num] - 신뢰하지 않는 인터페이스에 초당 arp packet수 조절 - 넘으면 차단							
 ip arp inspection trust - 스위치가 연결되어 있거나 신뢰가능한 인터페이스에 설정							
 							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
+test로 untrust interface에서 arp packet 전송시 나오는 로그
+*Jun 30 11:51:48.183: %SW_DAI-4-DHCP_SNOOPING_DENY: 1 Invalid ARPs (Req) on Et0/2, vlan 10.([0050.7966.6804/192.168.10.200/ffff.ffff.ffff/192.168.10.200/13:51:47 EET Tue Jun 30 2020])
+
+*Jun 30 11:51:49.186: %SW_DAI-4-DHCP_SNOOPING_DENY: 1 Invalid ARPs (Req) on Et0/2, vlan 10.([0050.7966.6804/192.168.10.200/ffff.ffff.ffff/192.168.10.200/13:51:48 EET Tue Jun 30 2020])
+
+*Jun 30 11:51:50.187: %SW_DAI-4-DHCP_SNOOPING_DENY: 1 Invalid ARPs (Req) on Et0/2, vlan 10.([0050.7966.6804/192.168.10.200/ffff.ffff.ffff/192.168.10.200/13:51:49 EET Tue Jun 30 2020])
+
+deny 됨
 							
 DAI 설정된 포트 확인하기							
+SW1#show ip arp inspection interfaces
+
+Interface	Trust State	Rate (pps)	Burst Interval
+
+-----------	--------------	-----------	----------------
+Et0/0		Trusted		50		1
+Et0/1		Untrusted	1		1					
+Et0/2		Untrusted	50		1					
+Et0/3		Untrusted	50		1					
 							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
+
 							
 DAI 설정된 정보 보기							
+SW1#show ip arp inspection statistics
+
+Vlan	Forwrded	Dropped		DHCP Drops	ACL Drops
+----	--------	-------		----------	---------
+10	5		21		21		0
+
+Vlan	DHCP Permits	ACL Permits	Probe Permits	Source MAC Failures
+----	------------	-----------	-------------	-------------------
+10	0		0		0		0
+
+Vlan Dest Mac Failure	IP Validation Failures	Invalid Protocol Data
+---- ----------------	----------------------	--------------------
+10   0			0			0
+
+
+
