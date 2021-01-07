@@ -1,0 +1,54 @@
+IGMP	Internet Group Management Protocol	
+Internet Protocol multicast group들의 membership을 관리하는 통신 규약 > multicast 관리		
+		
+IGMP는 IP host들과 multicast router들에 의해 사용됨		
+송수신 규약은 아니라도 network layer 상위에서 동작하는 IP multicast spec의 필수 구성요소		
+Unicast connetion에 있어서 Internet Control Message Protocol에 해당		
+Streaming video나 game등에 사용되며 보다 효율적인 resource사용을 가능하게 함		
+IGMP는 몇몇 공격을 받을 수도 있으며 방화벽에 의해 차단 될 수도 있다.		
+		
+IGMP snooping		
+switch가 호스트와 라우터간의 대화내용을 듣는 것		
+>	switch는 multicast traffic을 필요로 하는 client에게만 전달	
+스위치 안에서 IGMP snooping이 enable되면 host와 switch혹은 multicast router간의 IGMP packet을 분석		
+주어진 multicast group에 대하여 IGMP report를 받을 땐 multicast group에 host의 port번호를 더하는 역할을 수행하고 IGMP가 나가면 host의 port를 제거		
+Multicast를 이해 못 하는 switch는 broadcast multicast traffic을 LAN상의 모든 포트에 뿌리지만 IGMP snooping을 이용하는 switch는 해당 traffic을 관심있어하는 client에게만 전달		
+multicast traffic의 감소는 switch에게서 packtet processing을 줄여주어 메모리 가격을 줄여 줄 수 있으며 host에게 있어서는 network card나 운영체제가 네트웍상에 발생되는 모든 multicast traffic에 대하여 filter 역할을 해 주므로 workload를 줄여줄 수 있다		
+		
+igmp는 하나의 라우터와 여러 호스트로 구성되는 서브넷 상에서 라우터가 자신에 속한 호스트들이 어떤 멀티캐스트 그룹에 속하는 가를 파악하기 위한 일종의 신호 제어용 프로토콜		
+유저 - 라우터 간의 관계		
+멀티캐스트 그룹의 멤버쉽을 관리하기 위해 사용되는 communication protocol		
+ip host와 바로 근처에 있는 multicast router 사이에서 multicast group을 만드는데 사용됨		
+ip multicast에서 없어서는 안 될 중요한 요소, network layer 3에서 수행. - unicast connections에 사용되는 ICMP와 유사		
+온라인 스트리밍 비디오나 게임에 사용되ㅏ며 이러한 유형의 응용 서비스에서 대역폭의 좀더 효율적인 사용을 가능하게 함		
+몇가지의 외부 공격에 노출되어 있고 방화벽은 유저가 필요하지 않을 때 사용하지 않는 것을 허용		
+		
+		
+		
+		
+동작설명		
+		
+multicast router는 주기적으로 subnet host group들에 IGMP Query 메시지를 전송		
+host는 IGMP Query 메시지에 응답하며 자신이 가입하고자 하는 그룹주소 정보를 IGMP Report메시지를 통해 라우터에게 알려줌		
+host는 Query 메시지 없이도 먼저 .Report 메시지를 라우터에게 전송 할 수 있음		
+		
+IGMP 동작구분		
+그룹가입		그룹에 가입하고자 하는 요청을 라우터에 보고
+그룹 멤버쉽 조사		멤버쉽 질의 메시지를 보내서 응답을 기다림
+멤버쉽 연속		계속해서 유지하기 원하는 보고 메시지
+그룹 탈퇴		탈퇴에 대한 응답메시지를 보내지 않음
+		
+		
+IGMP Snooping		
+IGMP traffic을 감지하기 위해 사용		
+switch가 router와 host사이에서 벌어지는 IGMP 송수신을 스위치에서 Layer 3 에서 주고 받는 multicast packt processing에 의해 감지하도록 하게 함		
+switch에서 IGMP Snooping이 enable 되었을 때 switch는 네트워크상에 있는 router 와 host 사이에서 주고받는 모든 IGMP 패킷들을 분석		
+switch가 host로부터 주어진 multicast group을 위한 IGMP Report를 감지했을 때 switch는 multicast group list에 host의 port넘버를 추가		
+switch가 IGMP Leave를 감지했을 때 multicast group list에 그 host의 port를 삭제		
+		
+		
+		
+관련표준		
+RFC	1112	
+RFC	2236	
+RFC	3376	
