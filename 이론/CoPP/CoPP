@@ -1,0 +1,15 @@
+CoPP	- Control Plane Policing
+	
+Sever 대상이아니라 Network Device를 대상으로 DoS 공격이 진행되는 경우 이를 방어하기 위한 기법	
+	
+Roter 와 Switch 같은 Network Device 를 대상으로 DoS 공격을 하게되면 장비에 과부하가 발생되어 정상적인 Routing / Switching을 할 수 없음	
+Network Device는 자신이 목적지가 아닌 트래픽은 Data Plane으로 처리하기 때문에  CPU에 부하를 받지 않음	
+하지만 자신디 처리해야 하는 트래픽 수신 시 Control Plane에서 처리 - CPU 부하 발생	
+Network Device가 목적지인 트래픽을 대량으로 발생시켜 해당 장비의 Control Plane에 부하를 주는 Dos공격 진행 가능 > CPU 및 Memeory 부하 발생	
+위와 같은 공격을 방어하기 위해 Data Plane에서 Control Plane으로 이동하는 경로를 하나의 논리적 interface취급하여 QoS 적용 가능	
+> CoPP	
+	
+
+
+
+https://m.blog.naver.com/PostView.nhn?blogId=comp13578&logNo=221045525067&proxyReferer=https:%2F%2Fwww.google.com%2F	
