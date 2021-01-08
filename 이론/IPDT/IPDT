@@ -1,0 +1,58 @@
+IPDT	IP Device Tracking
+	
+주요 업무	연결된 호스트를 계속 추적하는 것
+unicast ARP probe를 30초마다 전송 - default값이 30초	
+이러한 프로브는 링크의 다른쪽에 연결된 호스트의 MAC 주소로 전송되며, ARP가 나가는 물리적 인터페이스의 MAC 주소와 보낸 사람 IP 주소를 기본 소스로 레이어 2 (L2)를 사용합니다	
+	
+목적	
+switch가 ip주소를 통해 연결된 장치 목록을 얻고 유지하는 것	
+protbe는 host로부터 ARP 요청 / 응답을 통해 확인 후 테이블의 항목을 유지하기 위해 사용	
+	
+IPDT enable 시 IP ARP Inspection도 자동으로 enable	
+ARP packet 모니터링 시 신규 호스트 감지	
+Dynamic ARP Inspection이 활성화된 경우 Device Tracking Table에서 신규 호스트 감지를 위해 유효성 검사를 하는 ARP Packet만 사용됨	
+	
+IP DHCP snooping 활성화 시 dhcp가 ip주소를 할당하거나 취소 할 때 신규 호스트 존재/제거 를 감지	
+	
+	
+특징	
+항상 사용 가능한 기능	
+최신 cisco ios 버전에서는 default로 enable됨 	
+Dynamic ACL 소스IP목록을 채우거나 보안 글부 태그에 대한 IP주소 바인딩을 유지하기 위해 IP/MAC 호스트 연결 데이터베이스를 사용할 때 매우 유용할 수도 있음	
+	
+ARP probe는 다음과 같은 2가지 환경에서 전송됨	
+1. IPDT DB의 현재 entry와 관련된 링크가 down에서 up으로 이동 하고 ARP entry항목이 채워질 때	
+2. IPDT DB entry가 이미 up 상태인 link가 만료된 probe를 갖고 있을 때	
+	
+Know Issue	
+switch에서 보낸 keepalive Probe는 L2 check 용	
+switch 관점에서 볼 경우 ARP에서 소스로 사용되는 ip는 중요하지 않다.	
+> 이 기능은 ip가 설정되지 않은 장비들에서 사용 가능하므로 0.0.0.0 ip 와는 관련이 없다.	
+host가 이 메시지를 받을 때, 응답하고 받은 packet에서 사용할 수 있는 유일한 ip주소인 목적지 ip 필드로 되돌려 보낸다. 	
+이로 인해 잘못된 중복 ip 경고 발생 가능, 응답하는 host는 자체 ip주소를 packet의 소스 및 대상으로 간주하기 때문 - 중복 ip 0.0.0.0 참조	
+	
+	
+Default State and Operation	
+IPDT가 global config 부분에서 enable되었다고해서 IPDT가 설정된 포트를 모니터 한다는 것을 의미하지는 않음	
+IPDT가 항상 켜져있고 IPDT가 global에서 껏다켰다 할 수 있는 버전에서 IPDT가 global에서 enable되면 다른 기능은 특정 포트에서 활성화 되는지 여부를 결정	
+	
+기능 부분	
+Netwrok Mobility Services Protocol - NMSP, Version 3.2.0E, 15.2(1)E, 3.5.0E and later	
+Device sensor, Versions 15.2(1)E, 3.5.0E and later	
+1X, MAC Authentication Bypass (MAB), session manager	
+Web-based authentication	
+Auth-proxy	
+IP Services Gateway (IPSG) for static hosts	
+Flexible netflow	
+Cisco TrustSec (CTS)	
+Media trace	
+HTTP redirects	
+	
+	
+IPDT Disable 명령어	
+no ip device tracking	
+	
+	
+	
+IPDT cisco 본문	
+https://www.cisco.com/c/en/us/support/docs/ip/address-resolution-protocol-arp/118630-technote-ipdt-00.html	
