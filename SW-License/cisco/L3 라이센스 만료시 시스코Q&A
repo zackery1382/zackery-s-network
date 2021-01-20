@@ -1,0 +1,12 @@
+Q.  
+Several customers believe that when their subscription expires, a Catalyst 9000 switch will not work. 
+Can you confirm if L2/L3 services will work if the license has expired?
+
+
+A.  
+
+Yes, the switch will continue to function, however the customers will not be entitled to receive updates/upgrades for the functionality in the Cisco DNA stack.
+Customers must renew their subscription to continue to get access to the Cisco DNA innovation. 
+L2/L3 services will continue working, 
+and customers are entitled to receive updates/upgrades for this functionality, 
+as they are tied with the perpetual network OS: Network Advantage or Network Essentials.
