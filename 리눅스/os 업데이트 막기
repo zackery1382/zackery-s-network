@@ -1,0 +1,24 @@
+cd /etc/yum.repos.d/
+
+vi CentOS-Base.repo
+
+
+i   > 수정모드 진입
+
+update관련 내용삭제 
+
+esc - :wq   > 수정모드 나오고 저장
+
+
+
+vi CentOS-Sources.repo
+
+
+
+i   > 수정모드 진입
+
+update관련 내용삭제 
+
+esc - :wq   > 수정모드 나오고 저장
+
+
