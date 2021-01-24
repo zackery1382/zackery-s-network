@@ -14,6 +14,13 @@ dns
 ecs > :wq > enter
 하여 저장하고 나옴
 
+systemctl restart network   > 네트워크 재시작
+ifconfig                    > 변경사항 적용됬는지 확인
+
+
+변경사항 미 적용시 아래 내용 시행
+해당 인터페이스 다운시켯다가 다시 올리는 
+
 ifdown
 ifup
 
