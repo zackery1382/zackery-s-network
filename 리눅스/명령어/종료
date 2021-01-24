@@ -1,0 +1,26 @@
+poweroff  shutdown  halt
+
+
+
+shutdown -P +10   > 10분 후에 종료
+shutdown -r 22:00 > 오후 10시에 재부팅
+shutdown -c       > 예약된 shutdown 취소
+shutdown -k +15   > 현재 접속한 사용자에게 15분 후 시스템을 종료한다고 메시지를 보내지만 실질적으로는 종료가 안 
+shutdown -P now   > 즉시 종료
+shutdown now      > 유지보수 모드로 접속
+shutdown -f       > 재부팅 할 때 fsck 명령어 건너뛰고 부팅을 빠르게 진행
+
+
+
+
+init 명령어
+
+init 0  power off   종료
+init 1  rescue      시스템 복구 모드               - 단일 사용자 모드
+init 2  multi-user                                - 사용 안 함
+init 3  multi-user  텍스트 모드의 다중 사용자 모드  -  
+init 4  multi-user                                - 사용 안 함
+init 5  graphical 그래픽 모드의 다중 사용자 모드
+init 6  reboot
+
+init 런 레벨 모드 확인하려면 /lib/systemd/system/ 에서 runlevel?.target 파일 확인하면 된다
