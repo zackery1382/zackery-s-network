@@ -1,0 +1,21 @@
+터미널 접속 
+cd  /etc/sysconfig/network-scripts/
+vi incfg-xxx  xxx는 이더넷 포트 명
+
+
+i 눌러서 수정 가능하도록 변경
+
+ipaddr
+netmask
+gateway
+dns
+
+값 변경 후 
+ecs > :wq > enter
+하여 저장하고 나옴
+
+ifdown
+ifup
+
+진행하면 ip변경 사항 적용 완료
+
