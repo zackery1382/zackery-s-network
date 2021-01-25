@@ -1,0 +1,5 @@
+텍스트 형식으로 작성된 파일의 앞 10행 or 뒤 10행만 화면에 출력
+
+head ananconda-ks.cfg > 해당 파일의 앞 10행만 출력
+head -3 anaconda-ks.cfg > 해당 파일의 앞 3행만 출력
+tail -3 anaconda-ks.cfg > 해당 파일의 뒤 3행만 출력
