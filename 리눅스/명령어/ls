@@ -1,2 +1,9 @@
 List의 약자 Windows의 dir와 같은 역할
 해당 디렉터리에 있는 파일의 목록 나열
+
+ls  현재 디렉터리의 파일 목록
+ls /etc/sysconfig   /etc/sysconfig 디렉터리의 목록
+ls -a 현재 디렉터리의 파일 목록 - 숨김파일 포함
+ls -l 현재 디렉터리의 목록 - 자세히
+ls *.cfg  현재디렉터리에서 확장자가 cfg인 목록 보여줌
+ls -l /etc/sysconfig/a*   /etc/sysconfig 디렉터리에서 a로 시작하는 파일 목록을 보여줌
