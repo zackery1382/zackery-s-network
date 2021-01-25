@@ -1,0 +1,11 @@
+Change Directory의 약자
+
+cd  현재 사용자의 홈 디렉터리로 이동  - 현재 사용자가  root인 경우 /root 디렉터리로 이동
+cd ~centos  centos 사용자의 홈 디렉터리로 이동
+cd ..   바로 상위의 디렉터리로 이동 - /etc/sysconfig 디렉터리에서 cd .. 입력시 /etc 디렉터리로 이동 
+cd /etc/sysconfig   /etc/sysconfig 디렉터리로 이동 
+cd ../etc/sysconfig   상대경로로 이동. 현재 있는 디렉터리에서 바로 위 디렉터리로 이동 한 후 /etc/sysconfig로 이동
+
+. 과 .. 구분 필요
+. 은 현재 디렉터리
+..은 상위 디렉터리
