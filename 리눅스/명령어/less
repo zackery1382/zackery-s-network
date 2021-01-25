@@ -1,0 +1,5 @@
+more 명령어와 용도가 비슷
+more 기능에서 page up/down 기능 추가로 사용 가능
+
+less anaconda.cfg
+les +100 anaconda.cfg
