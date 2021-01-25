@@ -1,0 +1,11 @@
+Move의 약자
+파일이나 디렉터리의 이름을 변경하거나 다른 디렉터리로 옮길 때 사용
+
+mv abc.txt /etc/sysconfig  -  abc.txt를 /etc/sysconfig/ 디렉터리로 이동
+mv aaa bbb ccc ddd         -  aaa, bbb, ccc파일을 /ddd 디렉터리로 이동
+mv aaa.txt www.txt         -  abc.txt 이름을 www.txt로 변경해서 이동
+
+
+
+
+
