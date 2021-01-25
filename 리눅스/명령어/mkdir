@@ -1,0 +1,9 @@
+Make Directory의 약자
+새로운 디렉터리 생성
+생성된 디렉터리는 명령어를 실행한 사용자의 소유가 된다.
+
+mkdir abc   -  현재 디렉터리에 abc라는 하위 디렉터리를 생성 
+mkdir -p /def/fgh    -  /def/fgh 디렉터리를 생성하는데 만약 /fgh 디렉터리의 부모 디렉터리인 /def 디렉터리가 없을 경우 자동으로 /def 디렉터리 생성
+                        p는 Parents의 약자
+                        
+                        
