@@ -1,0 +1,16 @@
+해당 파일이 어떤 종류의 파일인지를 표시
+
+
+[root@localhost ~]# file  anaconda-ks.cfg 
+anaconda-ks.cfg: ASCII text
+
+file anaconda-ks.cfg 입력시 anaconda파일이 텍스트파일이므로 아스키 로 표시됨
+
+
+
+
+[root@localhost ~]# file /usr/bin/gzexe 
+/usr/bin/gzexe: POSIX shell script, ASCII text executable
+
+
+gzexe는 실행파일이므로 Executable 파일로 표시됨
