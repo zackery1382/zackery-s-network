@@ -4,4 +4,6 @@ B를 누르면 앞 페이지로 이동
 Q누르면 종료
 
 
-**ㅁㅁ**
+
+more anaconda-ks.cfg
+more +100 anaconda-ks.cfg  > 100행 부터 
