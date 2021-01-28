@@ -78,3 +78,12 @@ chmod o+rwx 그 외 사용자에게 일기, 쓰기, 실행 권한을 허가한�
 
 파일 소유한 사용자와 그룹을 의미
 
+파일의 소유권을 바꾸는 명령어
+chown
+
+chown 사용자이름(.그룹이름) 파일이름
+
+chown centos sample.txt -> sample.txt의 소유자를 centos 사용자로 바꾸라는 의미
+chown centos.centos sample.txt -> 파일의 그룹도 centos 그룹으로 바꾸라는 의미
+chgrp centos sample.txtg -> 그룹만 바꾸라는 의미
+
