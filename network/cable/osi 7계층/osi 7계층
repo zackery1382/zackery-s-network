@@ -1,0 +1,15 @@
+1. Phsical Layer
+2. Data Link Layer
+3. Network Layer
+4. Transpor Layer
+5. Seesion Layer
+6. Presentation Layer
+7. Application Layer
+
+
+osi 7 계층으로 나눈 이유
+1. 데이터의 흐름이 한눈에 보임
+2. 문제해결하기가 편리하다
+3. 각 층병로 표준화를 하니 여러 벤더의 장비를 혼용해서 써도 네트워크에 이상이 없다.
+
+
