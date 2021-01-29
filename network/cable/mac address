@@ -1,0 +1,18 @@
+MAC address
+Media Access Control Address
+
+ARP(Address Resolution Protocol) : ip를 mac으로 다시 바꾸는 프로토콜
+
+MAC Address
+
+11:22:33:44:55:66:
+11-22-33-44-55-66-
+1122.3344.5566
+
+이런식으로 표기
+
+
+OUI - 생산자를 나타내는 코드
+앞의 6자리
+
+뒤의 6자리 제조한 회사에서 부여한 
