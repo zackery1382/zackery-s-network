@@ -1,0 +1,15 @@
+/etc/sysconfig/network
+
+네트워크의 기본 정보가 설정되어 있는 파일
+네트워크 사용 여부가 적혀있음
+
+
+/etc/sysconfig/network-scripts/ifcfg-ens**
+ens** 장치에 설정된 네트워크 정보가 모두 들어있는 파일
+
+
+/etc/resolv.conf
+dns 서버의 정보와 호스트 이름이 들어있는 파일
+
+/etc/hosts
+현 컴퓨터의 호스트 이름과 FQDN이 들어있는 파일
