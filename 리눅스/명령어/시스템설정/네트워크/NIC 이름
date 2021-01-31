@@ -1,0 +1,6 @@
+리눅스에 랜카드 삽입시 장치의 이름은 ens**로 인식됨
+
+
+ifconfig ens**  > 네트워크 설정 정보 출력
+ifup ens**  > 네트워크 장치 가동(enable)
+ifdown ens**  > 네트워크 장치 중지(shutdown)
