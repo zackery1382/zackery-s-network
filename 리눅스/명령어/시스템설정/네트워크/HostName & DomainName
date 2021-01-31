@@ -1,0 +1,12 @@
+host name은 각각의 컴퓨터에 지정된 이름을 말함
+domain name 혹은 domain address는 hanb.co.kr과 같은 형식으로 표기
+                                 kr은 한국, co는 회사, hanb은 단체/회사의 이름을 의미
+                                 
+ex)
+호스트이름 this
+도메인 이름 hanbit.co.kr
+전체 이름 this.hanbit.co.kr 이 된다  >  FQDN이라 부른다
+
+FQDN : Fully Qualified Domain Name
+
+같은 회사에서 this.hanbit.co.kr이라는 호스트는 유일하다
