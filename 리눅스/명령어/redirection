@@ -1,0 +1,14 @@
+여표준 입출력의 방향을 바꿔줌
+표준 입력은 키보드, 표준 출력은 모니터이지만 이를 파일로 처리하고 싶을 때 주로 사용
+
+
+ex)
+
+ls -l > list.txt  -> ls -l의 결과를 확면에 출력하지 않고 list.txt 파일에 저장
+                     list.txt 파일이 기존에 있으면 덮어 씀
+                     
+ls -l >> list.txt -> 위와 같음 단 기존 파일이 있을 경우 덮어쓰지 않고 이어서 씀
+
+sort < list.txt   -> list.txt 파일을 정령해서 화면에 출력
+
+sort < list.txt > out.txt   ->  list.txt 파일을 정령해서 out.txt 파일에 씀
