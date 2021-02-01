@@ -1,0 +1,12 @@
+필요한 것만 걸러주는 명령어
+
+grep, tail, wc, sort, awk, sed 등의 명령어가 있음
+
+ex)
+ps -ef | grep bash  >  ps -ef를 입력하면 모든 프로세스 번호를 출력
+                       bash라는 글자가 들어간 프로세스만 출력하게 grep으로 필터함
+                       
+rpm -qa | grep yum  > 설치된 패키지 중에서 yum이라는 글자가 들어간 패키지를 출력
+                      그냥 rpm -qa yum 실행시 yum-utils는 출력되지 않음
+                      
+                      
