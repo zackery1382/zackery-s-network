@@ -1,0 +1,60 @@
+CentOS 를 부팅할 때 처음 나오는 선택 화면
+
+- 부트 정보를 사용자가 임의로 변경해 부팅할 수 있음
+- 부트 정보가 정확하지 않더라고 수정하여 부팅 할 수 있음
+- 다른 여려 가지 운영체제와 멀티 부팅 가능
+- 대화형 설정 > 커널의 경로와 파일 이름만 알면 부팅이 가능
+
+
+
+최근 grub에서 업그레이드 된 grub 2 버전을 사용하기 시작
+grub 2 sms 셸 스크립트 문법을 사용
+grub 보다 설정을 변경하기 상당히 복잡해짐
+
+grub보다 grub2가 나은 점
+
+셸 스크립트를 지원함으로써 조건식과 함수 사용 가능
+동적 모듈 로드 가능
+  동적 모듈은 /boot/grub2/i386-pc/ 디렉터리에 mod 파일로 존재
+  grub2는 필요에 따라 이 파일들을 로드할 수 잇음
+  
+그래픽 부트메뉴 지원
+부트 스플래시 성능 개선
+iso 이미즈를 이요앻서 바로 부팅 가능
+설정 파일의 형식이 변경되었지만 더 향상된 내용 포함 가능
+
+
+
+
+grub2 설정파일 /boot/grub2/grub.cfg 파일
+/etc/grub2.cfg 는 링크파일
+
+grub.cfg 파일 > 일반 사용자에게는 읽기 전용
+              > root 사용자도 이 파일을 직접 편집해서는 안됨
+              > 설정 내용 변경하기위해서는 /etc/default/grub 파일과 /etc/grub.d/ 디렉터리의 파일을 수정한 후 'grub2-mkconfig'명령어를 싱행해 설정 변경 가능
+              
+              
+              
+/etc/default/grub 파일의 설정내용 이해 필요
+
+1.  GRUB_TIMEOUT-5
+2.  GRUB_DISTRIBUTOR="$(sed's.release.*$,,g'/etc/system-releas)"
+3.  GRUB_DEFAULT=saved
+4.  GRUB_DISABLE_SUBMENU=true
+5.  GRUB_TERMINAL_OUPUT='console'
+6.  GRUB_CMDLINE_LINUX='vconsole.keymap=us crashkernel=auto vconsole.font=latarcyrheb-sun16 rhgb quiet"
+7.  GRUB_DISABLE_RECOVERY="true"
+
+1. 처음 화면이 나오고 자동으로 부팅되는 시간을 초단위로 설정
+2. 초기 부팅화면의 각 엔트리 앞에 붙을 배포판 이름을 추출
+    이 행의 경우 /etc/system-release 파일에서 CentOS라는 글자를 추출
+3. saved는 이전에 선택한 엔트리가 기본으로 계속 선택되도록 한다는 뜻. 0번으로 지정하면 첫 번째 엔트리를 의미
+4. 서브 메뉴 사용 여부 설정 
+  기본 값을 true로 설정해 놓으면 서브 메뉴를 사용하지 않음
+5. GRUB이 나올 장치를 설정
+  console로 설정시 모니터로 설정됨
+  seral, gfxterm 등으로 설정 가능
+6. 부팅 시 커널에 전달할 파라미터 지정
+   이전에 사용하던 grub 1의 파라미터도 일부 사용 가능
+7. true로 설정하면 메뉴 엔트리에서 복구와 관련된 것을 비활성
+
