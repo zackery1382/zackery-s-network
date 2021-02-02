@@ -9,3 +9,30 @@
 평상시에도 늘 가동하는 서버 프로세스
 
 systemd 라고 부르는 서비스 매니저 프로그램으로 작동시키거나 관리
+
+시스템과 독자적으로 구동되어 제공하는 프로세스
+ex) 웹 서버, db서버, ftp 서버 등이 있음
+
+실행 및 종료는 보통 'systemctl start/stop restart 서비스이름' 으로 사용됨
+ex) systemctl start httpd > 웹 서버 구동
+
+서비스의 실행 스크립트 파일
+/usr/lib/systemd/ 디렉터리 에 '서비스이름.service'라는 이름으로 확인 가능
+ex) httpd.service 라는 이름으로 웹 서비스 파일이 존재
+/usr/lib/systemd/ 디렉터리에 있는 파일들은 대부분 'systemctl start/stop/restart 서비스이름'으로 실행/중지/재시작 할 수 있음
+
+ 부팅과 동시에 서비스의 자동 실행 여부 지정 가능
+ 
+터미널에서 'systemctl list-unit-files' 사용하면 enabled, disabled를 확인 할 수 있음
+X 윈도 환경에서는 'system-config-services' 명령어로 설정 가능
+
+
+
+서비스 시작/중지/재시작
+  systemctl start/stop/restart 서비스이름
+  
+서비스 상태 확인
+  systemctl status 서비스이름
+  
+서비스 사용/사용안함 설정
+  systemctl enable/disable 
