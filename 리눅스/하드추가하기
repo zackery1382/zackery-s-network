@@ -2,8 +2,16 @@
 [root@localhost /]# 
 [root@localhost /]# 
 [root@localhost /]# 
+
+------------------------------------
+장착된 하드디스크 확인하기
 [root@localhost /]# ls /dev/sd*
 /dev/sda  /dev/sda1  /dev/sda2  /dev/sdb
+-------------------------------------------
+
+--------------------------------------
+하드디스크에 파티션 할당하기
+
 [root@localhost /]# fdisk /dev/sdb
 
 Welcome to fdisk (util-linux 2.32.1).
@@ -23,6 +31,8 @@ First sector (2048-41943039, default 2048):
 Last sector, +sectors or +size{K,M,G,T,P} (2048-41943039, default 41943039): 
 
 Created a new partition 1 of type 'Linux' and of size 20 GiB.
+------------------------------------------------------------------------------
+파티션 할당시 
 
 Command (m for help): m
 
@@ -61,9 +71,11 @@ Help:
    G   create a new empty SGI (IRIX) partition table
    o   create a new empty DOS partition table
    s   create a new empty Sun partition table
+-------------------------------------------------------
 
+하드디스크 파일시스템 유형
 
-Command (m for help): t
+Command (m for help): t		-파일시스템 유형 선택 옵션
 Selected partition 1
 Hex code (type L to list all codes): l
 
@@ -92,8 +104,11 @@ Hex code (type L to list all codes): l
 1b  Hidden W95 FAT3 70  DiskSecure Mult bb  Boot Wizard hid fd  Linux raid auto
 1c  Hidden W95 FAT3 75  PC/IX           bc  Acronis FAT32 L fe  LANstep        
 1e  Hidden W95 FAT1 80  Old Minix       be  Solaris boot    ff  BBT            
-Hex code (type L to list all codes): fd
+Hex code (type L to list all codes): fd		-레이드 설정
 Changed type of partition 'Linux' to 'Linux raid autodetect'.
+
+----------------------------------------
+하드 설정한거 확인 및 저장
 
 Command (m for help): p
 Disk /dev/sdb: 20 GiB, 21474836480 bytes, 41943040 sectors
@@ -117,6 +132,8 @@ Command (m for help): w
 The partition table has been altered.
 Calling ioctl() to re-read partition table.
 Syncing disks.
+--------------------------------------------
+파티션 할당된 디스크 확인하기
 
 [root@localhost /]# ls -l /dev/sd*
 brw-rw----. 1 root disk 8,  0  2월 28 11:31 /dev/sda
@@ -127,12 +144,19 @@ brw-rw----. 1 root disk 8, 17  2월 28 11:39 /dev/sdb1
 [root@localhost /]# 
 [root@localhost /]# 
 [root@localhost /]# 
+
+--------------------------------------
+마운트 할 디렉터리 생성
 [root@localhost /]# mkdir 
 bin/   dev/   home/  lib64/ mnt/   proc/  run/   srv/   tmp/   var/   
 boot/  etc/   lib/   media/ opt/   root/  sbin/  sys/   usr/   
 [root@localhost /]# mkdir test1
 [root@localhost /]# 
 [root@localhost /]# 
+
+---------------------------------------
+생성한 파티션 ext4로 포맷하기
+
 [root@localhost /]# mkfs.ext4 /dev/sdb1
 mke2fs 1.44.3 (10-July-2018)
 Creating filesystem with 5242624 4k blocks and 1310720 inodes
@@ -145,28 +169,15 @@ Allocating group tables: done
 Writing inode tables: done                            
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done   
-
-[root@localhost /]# 
-[root@localhost /]# 
-[root@localhost /]# 
-[root@localhost /]# 
-[root@localhost /]# 
-[root@localhost /]# mount 
-bin/   dev/   home/  lib64/ mnt/   proc/  run/   srv/   test1/ usr/   
-boot/  etc/   lib/   media/ opt/   root/  sbin/  sys/   tmp/   var/   
-[root@localhost /]# mount 
-bin/   dev/   home/  lib64/ mnt/   proc/  run/   srv/   test1/ usr/   
-boot/  etc/   lib/   media/ opt/   root/  sbin/  sys/   tmp/   var/   
-[root@localhost /]# mount /dev/sdb1 
-bin/   dev/   home/  lib64/ mnt/   proc/  run/   srv/   test1/ usr/   
-boot/  etc/   lib/   media/ opt/   root/  sbin/  sys/   tmp/   var/   
-[root@localhost /]# mount /dev/sdb1 
-bin/   dev/   home/  lib64/ mnt/   proc/  run/   srv/   test1/ usr/   
-boot/  etc/   lib/   media/ opt/   root/  sbin/  sys/   tmp/   var/   
+-------------------------------
+마운트 하기
+mount 장치이름 디렉터리 이름
 [root@localhost /]# mount /dev/sdb1 test1/
 [root@localhost /]# 
-[root@localhost /]# 
-[root@localhost /]# 
+
+-------------------------------
+마운트 정보 확인
+
 [root@localhost /]# mount
 sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime,seclabel)
 proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
@@ -202,7 +213,7 @@ tmpfs on /run/user/42 type tmpfs (rw,nosuid,nodev,relatime,seclabel,size=184940k
 tmpfs on /run/user/0 type tmpfs (rw,nosuid,nodev,relatime,seclabel,size=184940k,mode=700)
 gvfsd-fuse on /run/user/0/gvfs type fuse.gvfsd-fuse (rw,nosuid,nodev,relatime,user_id=0,group_id=0)
 fusectl on /sys/fs/fuse/connections type fusectl (rw,relatime)
-/dev/sdb1 on /test1 type ext4 (rw,relatime,seclabel)
+/dev/sdb1 on /test1 type ext4 (rw,relatime,seclabel)	-최근 마운트 한 정보
 [root@localhost /]# 
 [root@localhost /]# 
 [root@localhost /]# 
